@@ -1,12 +1,24 @@
 This code performs badly on TX2 for reason we do not know.
 to run the code, just:
 
-git clone 
+git clone https://github.com/WANG-KX/tx2_issue.git
+
+
 cd tx2_issue
+
+
 mkdir build
+
+
 cd build
+
+
 cmake ..
+
+
 make
+
+
 ./sgm
 
 the performance will print out and the result will show on the screen.
