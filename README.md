@@ -6,18 +6,13 @@ git clone https://github.com/WANG-KX/tx2_issue.git
 
 cd tx2_issue
 
-
 mkdir build
-
 
 cd build
 
-
 cmake ..
 
-
 make
-
 
 ./sgm
 
