@@ -12,7 +12,9 @@ set(
     CUDA_NVCC_FLAGS
     ${CUDA_NVCC_FLAGS};
     -O3 -lineinfo
-    -gencode=arch=compute_61,code=sm_61
+    #-gencode=arch=compute_61,code=sm_61 #for TITAN XP
+    -gencode=arch=compute_62,code=sm_62 #for tx2
+    #-gencode=arch=compute_53,code=sm_53 #for tx1
     )
 
 cuda_add_executable(

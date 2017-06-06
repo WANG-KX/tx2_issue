@@ -3,7 +3,6 @@ to run the code, just:
 
 git clone https://github.com/WANG-KX/tx2_issue.git
 
-
 cd tx2_issue
 
 mkdir build
