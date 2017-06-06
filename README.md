@@ -25,15 +25,15 @@ Below is the performance for reference:
 TITAN XP
 the input image size: 1344 x 391.
 wta cost 4.095000 ms.
-sgm cost: 37.640000 ms.
+sgm cost: 37.245998 ms.
 
 TX2
 the input image size: 1344 x 391.
-wta cost 41.571000 ms.
-sgm cost: 514.919000 ms.
+wta cost: 43.356998 ms.
+sgm cost: 515.893005 ms.
 
 TX1
 the input image size: 1344 x 391.
-wta cost 18.380000 ms.
-sgm cost: 287.463000 ms.
+wta cost 49.083000 ms.
+sgm cost: 671.835999 ms.
 

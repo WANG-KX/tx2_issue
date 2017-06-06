@@ -51,8 +51,11 @@ void wta(DeviceImage<PIXEL_COST> &cost, DeviceImage<float> &depth)
 	wta_grid.x = width;
 	wta_grid.y = height;
 
-	std::clock_t start = std::clock();
+  struct timeval start, end;
+  gettimeofday(&start,NULL);
 	wta_kernel<<<wta_grid, wta_block>>>(cost.dev_ptr, depth.dev_ptr);
   cudaDeviceSynchronize();
-	printf("wta cost %lf ms.\n", ( std::clock() - start ) / (double) CLOCKS_PER_SEC * 1000 );
+  gettimeofday(&end,NULL);
+  float time_use = (end.tv_sec-start.tv_sec) * 1000.0 + (end.tv_usec-start.tv_usec) / 1000.0f;
+  printf("wta cost: %lf ms.\n",time_use);
 }

@@ -1,6 +1,6 @@
 #include <cstdlib>
 #include <deque>
-#include <ctime>
+#include <sys/time.h>
 #include <iostream>
 
 #include <cuda_runtime.h>

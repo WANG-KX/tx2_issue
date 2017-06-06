@@ -18,8 +18,8 @@ void sgm(DeviceImage<PIXEL_COST> &cost, DeviceImage<float> &depth)
 	sgm_col_block.x = DEPTH_NUM;
 	sgm_col_grid.x = width;
   
-  std::clock_t start_time = std::clock();
-
+  struct timeval start, end;
+  gettimeofday(&start,NULL);
   sgm_cost_row_kernel<<<sgm_row_grid, sgm_row_block>>>(true, cost.dev_ptr, sgm_cost.dev_ptr);
   sgm_cost_row_kernel<<<sgm_row_grid, sgm_row_block>>>(false, cost.dev_ptr, sgm_cost.dev_ptr);
   sgm_cost_col_kernel<<<sgm_col_grid, sgm_col_block>>>(true, cost.dev_ptr, sgm_cost.dev_ptr);
@@ -33,8 +33,9 @@ void sgm(DeviceImage<PIXEL_COST> &cost, DeviceImage<float> &depth)
   depth_filter_grid.y = height;
   sgm_filter<<<depth_filter_grid, depth_filter_block>>>(sgm_cost.dev_ptr, depth.dev_ptr);
   cudaDeviceSynchronize();
-
-  printf("sgm cost: %lf ms.\n",(std::clock()-start_time)/(double)CLOCKS_PER_SEC*1000);
+  gettimeofday(&end,NULL);
+  float time_use = (end.tv_sec-start.tv_sec) * 1000.0 + (end.tv_usec-start.tv_usec) / 1000.0f;
+  printf("sgm cost: %lf ms.\n",time_use);
 }
 
 __global__ void sgm_cost_row_kernel(bool to_left, DeviceImage<PIXEL_COST> *cost_devptr, DeviceImage<PIXEL_COST> *sgm_cost_devptr)
